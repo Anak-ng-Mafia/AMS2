@@ -58,6 +58,68 @@
                 <div class="user-dashboard">
                     <h1>HELLO DASHBOARD</h1>
                     
+                    <div class="container-fluid">
+                        <div class="row">
+                        <div class="col-md-3 col-sm-4">
+                        <div class="wrimagecard wrimagecard-topimage">
+                              <a href="#">
+                              <div class="wrimagecard-topimage_header" style="background-color:rgba(187, 120, 36, 0.1) ">
+                                <center><i class="fa fa-area-chart" style="color:#BB7824"></i></center>
+                              </div>
+                              <div class="wrimagecard-topimage_title">
+                                <h4>Veterinary Clinics
+                                <div class="pull-right badge" id="VetClinic"></div></h4>
+                              </div>
+                            </a>
+                          </div>
+                          </div>
+                        <div class="col-md-3 col-sm-4">
+                          <div class="wrimagecard wrimagecard-topimage">
+                              <div class="wrimagecard-topimage_header" style="background-color: rgba(22, 160, 133, 0.1)">
+                                <center><i class = "fa fa-cubes" style="color:#16A085"></i></center>
+                              </div>
+                              <div class="wrimagecard-topimage_title">
+                                <h4>Pet Owners
+                                <div class="pull-right badge" id="PetOwners"></div></h4>
+                              </div>
+                            </a>
+                          </div>
+                    </div>
+                      </div>
+                    
+
+
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+                  <script>
+                  
+                  //Initialize Firebase 
+                  
+                    const firebaseConfig = {
+                    apiKey: "AIzaSyD_iHrYN1ink0vCTIJvxmicGVuRddNzRHU",
+                    authDomain: "vetify-2602e.firebaseapp.com",
+                    projectId: "vetify-2602e",
+                    storageBucket: "vetify-2602e.appspot.com",
+                    messagingSenderId: "534160187138",
+                    appId: "1:534160187138:web:d90483f411ecbb27a56c1b",
+                    measurementId: "G-36H2DNHT1Y"
+                    };
+                  
+                      firebase.initializeApp(firebaseConfig);
+                  
+                    </script>
+                  
+                  
+
+
+
+
+
+
+
 
 
     <!-- Modal -->
@@ -86,3 +148,5 @@
     </div>
 
 </body>
+
+</html>
