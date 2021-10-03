@@ -1,0 +1,162 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="design.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a hef="home.html"><img src="/Pictures/vet_logo.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="/Pictures/vet_logo.png" alt="vet_logo" class="visible-xs visible-sm circle-logo">
+                    </a>
+                </div>
+                <div class="navi">
+                    <ul>
+                        <li><a href="dashboard.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Dashboard</span></a></li>
+
+                        <li><a href="forApproval.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">For Approvals</span></a></li>
+                        <li><a href="petOwners.html"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Pet Owners</span></a></li>
+                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Calender</span></a></li>
+                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Users</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#" class="icon-info">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <span class="label label-primary">3</span>
+                                        </a>
+                                    </li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <h1>HELLO DASHBOARD</h1>
+                    
+                    <div class="container-fluid">
+                        <div class="row">
+                        <div class="col-md-3 col-sm-4">
+                        <div class="wrimagecard wrimagecard-topimage">
+                              <a href="#">
+                              <div class="wrimagecard-topimage_header" style="background-color:rgba(187, 120, 36, 0.1) ">
+                                <center><i class="fa fa-area-chart" style="color:#BB7824"></i></center>
+                              </div>
+                              <div class="wrimagecard-topimage_title">
+                                <h4>Veterinary Clinics
+                                <div class="pull-right badge" id="VetClinic"></div></h4>
+                              </div>
+                            </a>
+                          </div>
+                          </div>
+                        <div class="col-md-3 col-sm-4">
+                          <div class="wrimagecard wrimagecard-topimage">
+                              <div class="wrimagecard-topimage_header" style="background-color: rgba(22, 160, 133, 0.1)">
+                                <center><i class = "fa fa-cubes" style="color:#16A085"></i></center>
+                              </div>
+                              <div class="wrimagecard-topimage_title">
+                                <h4>Pet Owners
+                                <div class="pull-right badge" id="PetOwners"></div></h4>
+                              </div>
+                            </a>
+                          </div>
+                    </div>
+                      </div>
+                    
+
+
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+                      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+                  <script>
+                  
+                  //Initialize Firebase 
+                  
+                    const firebaseConfig = {
+                    apiKey: "AIzaSyD_iHrYN1ink0vCTIJvxmicGVuRddNzRHU",
+                    authDomain: "vetify-2602e.firebaseapp.com",
+                    projectId: "vetify-2602e",
+                    storageBucket: "vetify-2602e.appspot.com",
+                    messagingSenderId: "534160187138",
+                    appId: "1:534160187138:web:d90483f411ecbb27a56c1b",
+                    measurementId: "G-36H2DNHT1Y"
+                    };
+                    
+                      firebase.initializeApp(firebaseConfig);
+                  
+                    </script>
+                  
+                  
+                        <script>
+                            function createImageCell(url, width, height) {
+            var td = document.createElement('td');
+            var img = document.createElement("/Requirement1");
+    img.src = url;
+    img.width = width;
+    img.height = height;
+    td.appendChild(img);
+    return td;
+}
+                        </script>
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div id="add_project" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header login-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Add Project</h4>
+                </div>
+                <div class="modal-body">
+                            <input type="text" placeholder="Project Title" name="name">
+                            <input type="text" placeholder="Post of Post" name="mail">
+                            <input type="text" placeholder="Author" name="passsword">
+                            <textarea placeholder="Desicrption"></textarea>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel" data-dismiss="modal">Close</button>
+                    <button type="button" class="add-project" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
