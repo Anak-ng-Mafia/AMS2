@@ -1,0 +1,233 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="design.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="Verify.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a hef="home.html"><img src="/Pictures/vetify.png" alt="merkery_logo" class="hidden-xs hidden-sm">
+                        <img src="/Pictures/vetify.png" alt="vet_logo" class="visible-xs visible-sm circle-logo">
+                    </a>
+                </div>
+                <div class="navi">
+                    <ul>
+                        <li class="active"><a href="dashboard.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Dashboard</span></a></li>
+
+                        <li><a href="forApproval.html"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">For Approvals</span></a></li>
+                        <li><a href="petOwners.html"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Pet Owners</span></a></li>
+                        <li><a href="vetClinics.html"><i class="fa fa-bar-chart" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Vet Clinics</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#" class="icon-info">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <span class="label label-primary">3</span>
+                                        </a>
+                                    </li>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <h1>HELLO DASHBOARD</h1>
+                    <table class="table table-bordered" id = "dashboard">
+                        <thead id = "ClinicsContainer">  
+                          <tr>
+                            <th scope="row" id="Vet"> Veterinary Clinics </th>
+                            <th scope="row"> Remarks </th>
+                            <th scope="row"> Requirement 1 </th>
+                            <th scope
+                            ="row"> Requirement 2 </th>
+                            <th scope="row" id="remarks"> Requirement 3 </th>
+                      
+                          </tr>
+                        </thead>
+                      </table>
+                      </div>
+                      
+                         <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+                          <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+                      <script>
+                      
+                      //Initialize Firebase 
+                      
+                        const firebaseConfig = {
+                        apiKey: "AIzaSyD_iHrYN1ink0vCTIJvxmicGVuRddNzRHU",
+                        authDomain: "vetify-2602e.firebaseapp.com",
+                        projectId: "vetify-2602e",
+                        storageBucket: "vetify-2602e.appspot.com",
+                        messagingSenderId: "534160187138",
+                        appId: "1:534160187138:web:d90483f411ecbb27a56c1b",
+                        measurementId: "G-36H2DNHT1Y"
+                        };
+                      
+                          firebase.initializeApp(firebaseConfig);
+
+                        var storage = firebase.storage();
+                        var storageRef = storage.ref();
+                      
+                        </script>
+                      
+                      
+                           <script> 
+                            const vetclinics = document.querySelector('#dashboard')
+                            var db = firebase.firestore();
+
+                      function renderVeterinary(doc){
+                      
+                      
+                      }
+
+                      function AcceptVerification(id){
+                        alert(id);
+                        db.collection("Admin").doc(id).update({
+                            Status: "Verified",
+                        }).then((doc) => {
+                            alert("gumana");
+                        })
+                        }
+
+                        function DeclineVerification(id){
+                        alert(id);
+                        db.collection("Admin").doc(id).update({
+                            Status: "Decline",
+                        }).then((doc) => {
+                            alert("gumana");
+                        })
+                        }
+
+
+                        db.collection('Admin').get().then((snapshot) => {
+                         snapshot.docs.forEach(doc => {
+                      
+                          let li = document.createElement('tr');
+                          let FullName = document.createElement('th');
+                          let Status = document.createElement('th');
+
+                           
+
+                        //   document.getElementById("dashboard").innerHTML += "<tr> <button onClick = 'AcceptVerification(`"+doc.id+"`)'> Accept </button></tr> <tr> " + doc.data().FullName+" </tr> <tr> " +doc.data().Status + " </tr>"
+                        document.getElementById("dashboard").innerHTML += "<tr><td> " + doc.data().FullName+" </td> <td> " +doc.data().Status + 
+                            " </td> <td><img class='rounded-circle mr-1' class = 'requirement1' id = '" + 
+                            doc.id + "req1' style='height: 150px; width:150px;'> </td> <td><img class='rounded-circle mr-1' id = '" + 
+                            doc.id + "req2' class = 'requirement2' style='height: 150px; width:150px;'> </td> <td><img class='rounded-circle mr-1' class = 'requirement3' id = '" + 
+                            doc.id+"req3' style='height: 150px; width:150px;'> </td>   <td><button onClick = 'AcceptVerification(`"+doc.id+"`)'> Accept </button> <button onClick = 'DeclineVerification(`"+doc.id+"`)'> Decline </button></td>  </tr>"
+                        
+
+
+                         //For displaying the user profile
+                        storageRef.child('Requirement2/'+doc.id+'.jpg').getDownloadURL()
+                        .then((url) => {
+                            // `url` is the download URL for 'images/stars.jpg'
+
+                            // This can be downloaded directly:
+                            var xhr = new XMLHttpRequest();
+                            xhr.responseType = 'blob';
+                            xhr.onload = (event) => {
+                                var blob = xhr.response;
+                            };
+                            xhr.open('GET', url);
+                            xhr.send();
+
+                            // Or inserted into an <img> element
+                            var img = document.getElementById(doc.id + "req2");
+                            img.setAttribute('src', url);
+                        })
+                        .catch((error) => {
+                        // Handle any errors
+                        });
+
+                        storageRef.child('Requirement1/'+doc.id+'.jpg').getDownloadURL()
+                        .then((url) => {
+                            // `url` is the download URL for 'images/stars.jpg'
+
+                            // This can be downloaded directly:
+                            var xhr1 = new XMLHttpRequest();
+                            xhr1.responseType = 'blob';
+                            xhr1.onload = (event) => {
+                                var blob = xhr.response;
+                            };
+                            xhr1.open('GET', url);
+                            xhr1.send();
+
+                            // Or inserted into an <img> element
+                            var img1 = document.getElementById(doc.id + "req1");
+                            img1.setAttribute('src', url);
+                        })
+                        .catch((error) => {
+                        // Handle any errors
+                        });
+
+                        storageRef.child('Requirement3/'+doc.id+'.jpg').getDownloadURL()
+                        .then((url) => {
+                            // `url` is the download URL for 'images/stars.jpg'
+
+                            // This can be downloaded directly:
+                            var xhr2 = new XMLHttpRequest();
+                            xhr2.responseType = 'blob';
+                            xhr2.onload = (event) => {
+                                var blob = xhr2.response;
+                            };
+                            xhr2.open('GET', url);
+                            xhr2.send();
+
+                            // Or inserted into an <img> element
+                            var img2 = document.getElementById(doc.id + "req3");
+                            img2.setAttribute('src', url);
+                        })
+                        .catch((error) => {
+                        // Handle any errors
+                        });
+                          
+                            // let btn = document.createElement("button");
+                            // btn.innerHTML = "Accept";
+                            
+                            // btn.onclick = AcceptVerification(doc.id);
+                            // vetclinics.appendChild(btn);
+                      
+                      
+                        //   li.setAttribute('data-id', doc.id);
+                        //   FullName.textContent = doc.data().FullName;
+                        //   Status.textContent = doc.data().Status;
+
+                        
+                       
+                      
+                      
+                          vetclinics.appendChild(li);
+                      
+                      })
+                      })
+                      
+                      </script>
